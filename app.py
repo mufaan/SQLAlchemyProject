@@ -1,5 +1,7 @@
 #Import Flask
 from flask import Flask, jsonify
+import pandas as pd
+import numpy as np
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
@@ -7,8 +9,15 @@ from sqlalchemy import create_engine, func, inspect, desc
 from datetime import datetime as DateTime, timedelta as TimeDelta
 from datetime import date
 from dateutil.parser import parse
-import pandas as pd
-import numpy as np
+
+
+
+
+
+
+
+
+
 
 # 2. Create an app
 app = Flask(__name__)
@@ -27,10 +36,11 @@ Station = Base.classes.station
 @app.route("/")
 def index():
     return (
-		f"/api/v1.0/precipitation<br/>"
+                f"Welcome to Mustafa's Weather API Services"
+		f"/api/v1.0/precipitation<br/>"                
 		f"/api/v1.0/stations<br/>"
 		f"/api/v1.0/tobs<br/>"
-        f"/api/v1.0<start>/<end><br/>"
+                f"/api/v1.0<start>/<end><br/>"
 	)
 
 @app.route("/about")
@@ -72,6 +82,21 @@ def tobs():
     thetemps = list(np.ravel(results3))
 
     return jsonify(thetemps)
+
+
+@app.route("/api/v1.0/<start>")
+def start_trip_temp(start_date):
+	start_trip = []
+
+	results_min = session.query(func.min(Measurement.tobs)).filter(Measurement.date == start_date).all()
+	results_max = session.query(func.max(Measurement.tobs)).filter(Measurement.date == start_date).all()
+	results_avg = session.query(func.avg(Measurement.tobs)).filter(Measurement.date == start_date).all()
+
+	start_trip = list(np.ravel(results_min,results_max, results_avg))
+
+	return jsonify(start_trip)
+
+
 
 @app.route("/<start>")
 def firstoption(start):
