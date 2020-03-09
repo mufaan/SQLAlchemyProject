@@ -1,14 +1,4 @@
-# SQLAlchemy Homework - Surfs Up!
-
-### Before You Begin
-
-1. Create a new repository for this project called `sqlalchemy-challenge`. **Do not add this homework to an existing repository**.
-
-2. Clone the new repository to your computer.
-
-3. Add your Jupyter notebook and `app.py` to this folder. These will be the main scripts to run for analysis.
-
-4. Push the above changes to GitHub or GitLab.
+# SQLAlchemy Project - Surfs Up!
 
 ![surfs-up.png](Images/surfs-up.png)
 
@@ -109,17 +99,7 @@ Now that you have completed your initial analysis, design a Flask API based on t
 
   * When given the start and the end date, calculate the `TMIN`, `TAVG`, and `TMAX` for dates between the start and end date inclusive.
 
-## Hints
 
-* You will need to join the station and measurement tables for some of the analysis queries.
-
-* Use Flask `jsonify` to convert your API data into a valid JSON response object.
-
-- - -
-
-### Optional: Other Recommended Analyses
-
-* The following are optional challenge queries. These are highly recommended to attempt, but not required for the homework.
 
 ### Temperature Analysis I
 
@@ -161,6 +141,4 @@ Now that you have completed your initial analysis, design a Flask API based on t
 
   ![daily-normals](Images/daily-normals.png)
 
-### Copyright
 
-Trilogy Education Services © 2019. All Rights Reserved.
